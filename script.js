@@ -18,9 +18,15 @@ const displayMessage = function (cssSelector, message) {
   document.querySelector(cssSelector).textContent = message;
 };
 
-console.log(secretNumber);
+console.log(secretNumber); //Cheat in console.
 
-document.querySelector('.check').addEventListener('click', function () {
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Enter') {
+    gameMechanics();
+  }
+});
+
+const gameMechanics = function () {
   const guess = Number(document.querySelector('.guess').value);
   console.log(guess, typeof guess);
 
@@ -57,6 +63,10 @@ document.querySelector('.check').addEventListener('click', function () {
       displayMessage('.score', 0);
     }
   }
+};
+
+document.querySelector('.check').addEventListener('click', function () {
+  gameMechanics();
 });
 
 document.querySelector('.again').addEventListener('click', function () {
