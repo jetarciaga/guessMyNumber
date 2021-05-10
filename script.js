@@ -69,7 +69,7 @@ document.querySelector('.check').addEventListener('click', function () {
   gameMechanics();
 });
 
-document.querySelector('.again').addEventListener('click', function () {
+const playAgain = function () {
   document.querySelector('body').style.backgroundColor = '#222';
   document.querySelector('.number').style.width = '15rem';
   displayMessage('.guess', '');
@@ -79,4 +79,12 @@ document.querySelector('.again').addEventListener('click', function () {
   displayMessage('.message', 'Start guessing...');
   displayMessage('.number', '?');
   document.querySelector('.guess').value = '';
+};
+
+document.querySelector('.again').addEventListener('click', function () {
+  playAgain();
+});
+
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape') playAgain();
 });
